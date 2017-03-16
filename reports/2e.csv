@@ -1,3 +1,4 @@
-,Min,1st Quart,Mean,Median,3rd Quart,Max,Std Dev
-Hue,28,28.0,28.0,28.0,28.0,28,0.0
-Saturation,37,37.0,37.0,37.0,37.0,37,0.0
+,Count,Min,1st Quart,Mean,Median,3rd Quart,Max,Std Dev
+Hue,1,28,28.0,28.0,28.0,28.0,28,0.0
+Saturation,1,37,37.0,37.0,37.0,37.0,37,0.0
+Lightness,1,143,143.0,143.0,143.0,143.0,143,0.0

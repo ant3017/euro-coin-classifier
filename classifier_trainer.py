@@ -28,12 +28,18 @@ class Coin:
                 / len(roi) / len(roi[0]))
             self.saturation = (sum([pixel[1] for rows in roi for pixel in rows])
                 / len(roi) / len(roi[0]))
+            self.lightness = (sum([pixel[2] for rows in roi for pixel in rows])
+                / len(roi) / len(roi[0]))
 
 
 class ContinuousFeature:
     """This class helps to analyze a continous feature"""
 
+    columns = ['Count', 'Min', '1st Quart', 'Mean', 'Median', '3rd Quart',
+        'Max', 'Std Dev']
+
     def __init__(self, data):
+        self.count = len(data)
         self.minimum = (min(data))
         self.maximum = (max(data))
         self.mean = (sum(data) / float(len(data)))
@@ -43,8 +49,8 @@ class ContinuousFeature:
         self.std_deviation = (np.std(data))
 
     def get_results(self):
-        return [self.minimum, self.f_quartile, self.mean, self.median,
-            self.t_quartile, self.maximum, self.std_deviation]
+        return [self.count, self.minimum, self.f_quartile, self.mean,
+            self.median, self.t_quartile, self.maximum, self.std_deviation]
 
 
 if __name__ == "__main__":
@@ -53,6 +59,9 @@ if __name__ == "__main__":
     denominations = ['5c', '10c', '20c', '50c', '1e', '2e']
 
     for d in denominations:
+
+        print('Processing "' + d + '" denomination...')
+
         coins = []
 
         for root, dirs, files in os.walk('data/' + d):
@@ -60,14 +69,15 @@ if __name__ == "__main__":
                 if root.startswith('data/.git'):
                     continue
                 file_name = os.path.join(root, f)
-                print('Processing ' + file_name + '...')
+                #print('Processing ' + file_name + '...')
                 img = cv2.imread(file_name)
                 coin = Coin(img)
                 coins.append(coin)
 
         hue = ContinuousFeature([c.hue for c in coins])
         saturation = ContinuousFeature([c.saturation for c in coins])
-        df = pandas.DataFrame([hue.get_results(), saturation.get_results()],
-                              index=['Hue', 'Saturation'])
-        df.columns = ['Min', '1st Quart', 'Mean', 'Median', '3rd Quart', 'Max', 'Std Dev']
+        lightness = ContinuousFeature([c.lightness for c in coins])
+        df = pandas.DataFrame([hue.get_results(), saturation.get_results(),
+            lightness.get_results()], index=['Hue', 'Saturation', 'Lightness'])
+        df.columns = ContinuousFeature.columns
         df.to_csv('./reports/' + d + '.csv')
