@@ -71,6 +71,8 @@ class ContinuousFeature:
         self.t_quartile = (np.percentile(data, 75))
         self.median = (np.median(np.array(data)))
         self.std_deviation = (np.std(data))
+        self.hist, bin_edges = np.histogram(data, bins=range(256))
+        self.hist = self.hist.tolist()
 
     def to_list(self):
         return [self.count, self.minimum, self.f_quartile, self.mean,
@@ -124,6 +126,7 @@ if __name__ == "__main__":
         classifier['classification'][d] = {'hue': hue.to_dict(), 'saturation':
             saturation.to_dict(), 'lightness': lightness.to_dict()}
 
+        # Generate Reports
         df = pandas.DataFrame([hue.to_list(), saturation.to_list(),
             lightness.to_list()], index=['Hue', 'Saturation', 'Lightness'])
         df.columns = ContinuousFeature.columns
