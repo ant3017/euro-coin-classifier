@@ -85,7 +85,8 @@ if __name__ == "__main__":
         'author': 'Chen Yumin',
         'website': 'http://chenyumin.com',
         'name': 'Euro Coin Detector Classifier',
-        'version': '1.0.0'
+        'version': '1.0.0',
+        'classification': {}
     }
 
     denominations = {'5c':'Xc/5c', '10c':'X0c/10c', '20c':'X0c/20c', '50c':'X0c/50c', 'X0c':'X0c', '1e':'1e', '2e':'2e'}
@@ -113,7 +114,7 @@ if __name__ == "__main__":
 
         result = [hue, saturation, lightness]
 
-        classifier[d] = {'hue': hue.to_dict(), 'saturation':
+        classifier['classification'][d] = {'hue': hue.to_dict(), 'saturation':
             saturation.to_dict(), 'lightness': lightness.to_dict()}
 
         df = pandas.DataFrame([hue.to_list(), saturation.to_list(),
@@ -122,4 +123,5 @@ if __name__ == "__main__":
         df.to_csv('./reports/' + d + '.csv')
 
     with open('euro_coin_detector_classifier.json', 'w') as fp:
-        json.dump(classifier, fp, indent=4, separators=(',', ': '))
+        json.dump(classifier, fp, indent=4, separators=(',', ': '),
+            sort_keys=False)
