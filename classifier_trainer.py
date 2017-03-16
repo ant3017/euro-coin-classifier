@@ -1,7 +1,26 @@
+#! /usr/bin/python
+CLASSIFIER_COMMENT = """
+    Euro Coin Detector Classifier
+    Created by Chen Yumin (http://chenyumin.com)
+////////////////////////////////////////////////////////////////////////////////
+ This software is provided by the copyright holders and contributors 'as is' and
+ any express or implied warranties, including, but not limited to, the implied
+ warranties of merchantability and fitness for a particular purpose are disclaimed.
+ In no event shall the Intel Corporation or contributors be liable for any direct,
+ indirect, incidental, special, exemplary, or consequential damages
+ (including, but not limited to, procurement of substitute goods or services;
+ loss of use, data, or profits; or business interruption) however caused
+ and on any theory of liability, whether in contract, strict liability,
+ or tort (including negligence or otherwise) arising in any way out of
+ the use of this software, even if advised of the possibility of such damage.
+////////////////////////////////////////////////////////////////////////////////
+"""
+
 import numpy as np
 import cv2
 import os
 import pandas
+import json
 
 
 class Coin:
@@ -61,8 +80,15 @@ class ContinuousFeature:
 if __name__ == "__main__":
     # If this script is running as a standalone program
 
+    classifier = {
+        '__comment': CLASSIFIER_COMMENT.split("\n"),
+        'author': 'Chen Yumin',
+        'website': 'http://chenyumin.com',
+        'name': 'Euro Coin Detector Classifier',
+        'version': '1.0.0'
+    }
+
     denominations = {'5c':'Xc/5c', '10c':'X0c/10c', '20c':'X0c/20c', '50c':'X0c/50c', 'X0c':'X0c', '1e':'1e', '2e':'2e'}
-    results = {}
 
 
     for d in denominations:
@@ -87,12 +113,13 @@ if __name__ == "__main__":
 
         result = [hue, saturation, lightness]
 
-        results[d] = {'hue': hue.to_dict(), 'saturation': saturation.to_dict(),
-            'lightness': lightness.to_dict()}
+        classifier[d] = {'hue': hue.to_dict(), 'saturation':
+            saturation.to_dict(), 'lightness': lightness.to_dict()}
 
         df = pandas.DataFrame([hue.to_list(), saturation.to_list(),
             lightness.to_list()], index=['Hue', 'Saturation', 'Lightness'])
         df.columns = ContinuousFeature.columns
         df.to_csv('./reports/' + d + '.csv')
 
-    print results
+    with open('euro_coin_detector_classifier.json', 'w') as fp:
+        json.dump(classifier, fp, indent=4, separators=(',', ': '))
