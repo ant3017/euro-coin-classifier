@@ -17,234 +17,234 @@
         "////////////////////////////////////////////////////////////////////////////////",
         ""
     ],
-    "author": "Chen Yumin",
-    "version": "1.0.0",
     "website": "http://chenyumin.com",
     "name": "Euro Coin Detector Classifier",
     "classification": {
         "X0c": {
             "hue": {
-                "count": 127,
+                "count": 1398,
                 "f_quartile": 16.0,
-                "t_quartile": 23.5,
+                "t_quartile": 19.0,
                 "median": 17.0,
                 "maximum": 94,
-                "std_deviation": 18.202973787173057,
-                "minimum": 13,
-                "mean": 24.118110236220474
+                "std_deviation": 6.2408488964590711,
+                "minimum": 11,
+                "mean": 17.898426323319025
             },
             "saturation": {
-                "count": 127,
-                "f_quartile": 115.0,
-                "t_quartile": 188.0,
-                "median": 172.0,
+                "count": 1398,
+                "f_quartile": 124.0,
+                "t_quartile": 173.0,
+                "median": 150.0,
                 "maximum": 214,
-                "std_deviation": 51.841356030223494,
+                "std_deviation": 32.948200685312926,
                 "minimum": 26,
-                "mean": 150.77952755905511
+                "mean": 145.89413447782547
             },
             "lightness": {
-                "count": 127,
-                "f_quartile": 131.5,
-                "t_quartile": 180.5,
-                "median": 148.0,
+                "count": 1398,
+                "f_quartile": 110.0,
+                "t_quartile": 158.0,
+                "median": 134.0,
                 "maximum": 248,
-                "std_deviation": 37.371039337823646,
-                "minimum": 71,
-                "mean": 155.45669291338584
+                "std_deviation": 33.880937009118512,
+                "minimum": 46,
+                "mean": 134.81902718168811
             }
         },
         "10c": {
             "hue": {
-                "count": 66,
+                "count": 149,
                 "f_quartile": 16.0,
-                "t_quartile": 28.75,
+                "t_quartile": 20.0,
                 "median": 17.0,
                 "maximum": 94,
-                "std_deviation": 23.466874842552706,
-                "minimum": 14,
-                "mean": 28.181818181818183
+                "std_deviation": 16.618924157458103,
+                "minimum": 12,
+                "mean": 22.181208053691275
             },
             "saturation": {
-                "count": 66,
-                "f_quartile": 105.25,
-                "t_quartile": 184.0,
-                "median": 166.5,
+                "count": 149,
+                "f_quartile": 118.0,
+                "t_quartile": 168.0,
+                "median": 144.0,
                 "maximum": 209,
-                "std_deviation": 50.488270192166866,
+                "std_deviation": 38.987603693300606,
                 "minimum": 39,
-                "mean": 145.31818181818181
+                "mean": 139.62416107382549
             },
             "lightness": {
-                "count": 66,
-                "f_quartile": 124.5,
-                "t_quartile": 184.75,
-                "median": 152.0,
+                "count": 149,
+                "f_quartile": 111.0,
+                "t_quartile": 170.0,
+                "median": 140.0,
                 "maximum": 239,
-                "std_deviation": 41.362404244053373,
+                "std_deviation": 40.877622802015729,
                 "minimum": 71,
-                "mean": 157.0
+                "mean": 142.59060402684563
             }
         },
         "50c": {
             "hue": {
-                "count": 4,
-                "f_quartile": 16.0,
-                "t_quartile": 17.25,
-                "median": 16.5,
-                "maximum": 18,
-                "std_deviation": 0.82915619758884995,
-                "minimum": 16,
-                "mean": 16.75
+                "count": 616,
+                "f_quartile": 15.0,
+                "t_quartile": 18.0,
+                "median": 17.0,
+                "maximum": 22,
+                "std_deviation": 1.7941940045577269,
+                "minimum": 11,
+                "mean": 16.745129870129869
             },
             "saturation": {
-                "count": 4,
-                "f_quartile": 156.5,
-                "t_quartile": 185.0,
-                "median": 172.0,
-                "maximum": 185,
-                "std_deviation": 15.898113095584646,
-                "minimum": 149,
-                "mean": 169.5
+                "count": 616,
+                "f_quartile": 155.75,
+                "t_quartile": 180.0,
+                "median": 170.0,
+                "maximum": 207,
+                "std_deviation": 19.670270663732186,
+                "minimum": 71,
+                "mean": 166.16883116883116
             },
             "lightness": {
-                "count": 4,
-                "f_quartile": 148.75,
-                "t_quartile": 192.0,
-                "median": 170.0,
-                "maximum": 210,
-                "std_deviation": 29.490464560599921,
-                "minimum": 133,
-                "mean": 170.75
+                "count": 616,
+                "f_quartile": 126.0,
+                "t_quartile": 166.0,
+                "median": 146.0,
+                "maximum": 213,
+                "std_deviation": 28.212906604391893,
+                "minimum": 67,
+                "mean": 144.84577922077921
             }
         },
         "2e": {
             "hue": {
-                "count": 1,
-                "f_quartile": 28.0,
-                "t_quartile": 28.0,
-                "median": 28.0,
-                "maximum": 28,
-                "std_deviation": 0.0,
-                "minimum": 28,
-                "mean": 28.0
+                "count": 277,
+                "f_quartile": 14.0,
+                "t_quartile": 15.0,
+                "median": 14.0,
+                "maximum": 85,
+                "std_deviation": 4.7435092199269917,
+                "minimum": 8,
+                "mean": 14.909747292418773
             },
             "saturation": {
-                "count": 1,
-                "f_quartile": 37.0,
-                "t_quartile": 37.0,
-                "median": 37.0,
-                "maximum": 37,
-                "std_deviation": 0.0,
-                "minimum": 37,
-                "mean": 37.0
+                "count": 277,
+                "f_quartile": 130.0,
+                "t_quartile": 159.0,
+                "median": 140.0,
+                "maximum": 213,
+                "std_deviation": 28.151263905958572,
+                "minimum": 26,
+                "mean": 142.90974729241879
             },
             "lightness": {
-                "count": 1,
-                "f_quartile": 143.0,
-                "t_quartile": 143.0,
-                "median": 143.0,
-                "maximum": 143,
-                "std_deviation": 0.0,
-                "minimum": 143,
-                "mean": 143.0
+                "count": 277,
+                "f_quartile": 118.0,
+                "t_quartile": 151.0,
+                "median": 134.0,
+                "maximum": 204,
+                "std_deviation": 26.119085921532104,
+                "minimum": 35,
+                "mean": 133.50541516245488
             }
         },
         "20c": {
             "hue": {
-                "count": 57,
+                "count": 633,
                 "f_quartile": 16.0,
-                "t_quartile": 17.0,
-                "median": 17.0,
+                "t_quartile": 19.0,
+                "median": 18.0,
                 "maximum": 41,
-                "std_deviation": 7.7524408134285379,
-                "minimum": 13,
-                "mean": 19.92982456140351
+                "std_deviation": 3.4999207605913529,
+                "minimum": 11,
+                "mean": 18.01263823064771
             },
             "saturation": {
-                "count": 57,
-                "f_quartile": 141.0,
-                "t_quartile": 190.0,
-                "median": 178.0,
+                "count": 633,
+                "f_quartile": 110.0,
+                "t_quartile": 146.0,
+                "median": 128.0,
                 "maximum": 214,
-                "std_deviation": 54.170859273781446,
+                "std_deviation": 30.343423406726725,
                 "minimum": 26,
-                "mean": 155.78947368421052
+                "mean": 127.63981042654028
             },
             "lightness": {
-                "count": 57,
-                "f_quartile": 133.0,
-                "t_quartile": 169.0,
-                "median": 146.0,
+                "count": 633,
+                "f_quartile": 99.0,
+                "t_quartile": 142.0,
+                "median": 120.0,
                 "maximum": 248,
-                "std_deviation": 32.285382955771183,
-                "minimum": 89,
-                "mean": 152.59649122807016
+                "std_deviation": 33.481146107075723,
+                "minimum": 46,
+                "mean": 123.23222748815166
             }
         },
         "1e": {
             "hue": {
-                "count": 27,
-                "f_quartile": 53.5,
-                "t_quartile": 96.5,
-                "median": 78.0,
-                "maximum": 146,
-                "std_deviation": 30.261004528298933,
-                "minimum": 14,
-                "mean": 76.555555555555557
+                "count": 346,
+                "f_quartile": 12.0,
+                "t_quartile": 107.0,
+                "median": 49.5,
+                "maximum": 155,
+                "std_deviation": 47.792796790303655,
+                "minimum": 2,
+                "mean": 60.578034682080926
             },
             "saturation": {
-                "count": 27,
-                "f_quartile": 43.5,
-                "t_quartile": 91.0,
-                "median": 54.0,
+                "count": 346,
+                "f_quartile": 19.0,
+                "t_quartile": 46.0,
+                "median": 30.0,
                 "maximum": 142,
-                "std_deviation": 36.421665570208255,
-                "minimum": 16,
-                "mean": 66.407407407407405
+                "std_deviation": 23.543793964036247,
+                "minimum": 4,
+                "mean": 35.861271676300575
             },
             "lightness": {
-                "count": 27,
-                "f_quartile": 131.0,
-                "t_quartile": 162.5,
-                "median": 152.0,
-                "maximum": 232,
-                "std_deviation": 32.671579373599805,
-                "minimum": 68,
-                "mean": 149.44444444444446
+                "count": 346,
+                "f_quartile": 81.0,
+                "t_quartile": 135.75,
+                "median": 106.0,
+                "maximum": 233,
+                "std_deviation": 40.804133220970783,
+                "minimum": 33,
+                "mean": 110.88150289017341
             }
         },
         "5c": {
             "hue": {
-                "count": 165,
+                "count": 1389,
                 "f_quartile": 9.0,
-                "t_quartile": 12.0,
+                "t_quartile": 11.0,
                 "median": 10.0,
-                "maximum": 28,
-                "std_deviation": 3.3565363230798311,
+                "maximum": 38,
+                "std_deviation": 2.5573059550913184,
                 "minimum": 4,
-                "mean": 10.381818181818181
+                "mean": 10.107991360691145
             },
             "saturation": {
-                "count": 165,
-                "f_quartile": 181.0,
-                "t_quartile": 203.0,
-                "median": 196.0,
-                "maximum": 212,
-                "std_deviation": 28.251789317363436,
-                "minimum": 61,
-                "mean": 186.0060606060606
+                "count": 1389,
+                "f_quartile": 126.0,
+                "t_quartile": 165.0,
+                "median": 147.0,
+                "maximum": 213,
+                "std_deviation": 33.897098749658973,
+                "minimum": 13,
+                "mean": 144.41612670986322
             },
             "lightness": {
-                "count": 165,
-                "f_quartile": 109.0,
-                "t_quartile": 166.0,
-                "median": 131.0,
-                "maximum": 246,
-                "std_deviation": 39.660170776302891,
-                "minimum": 70,
-                "mean": 139.34545454545454
+                "count": 1389,
+                "f_quartile": 99.0,
+                "t_quartile": 151.0,
+                "median": 119.0,
+                "maximum": 253,
+                "std_deviation": 39.567096223795275,
+                "minimum": 55,
+                "mean": 127.14686825053995
             }
         }
-    }
+    },
+    "author": "Chen Yumin",
+    "version": "1.0.0"
 }
