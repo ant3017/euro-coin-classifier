@@ -57,6 +57,8 @@ if __name__ == "__main__":
     # If this script is running as a standalone program
 
     denominations = ['5c', '10c', '20c', '50c', '1e', '2e']
+    results = {}
+
 
     for d in denominations:
 
@@ -77,7 +79,11 @@ if __name__ == "__main__":
         hue = ContinuousFeature([c.hue for c in coins])
         saturation = ContinuousFeature([c.saturation for c in coins])
         lightness = ContinuousFeature([c.lightness for c in coins])
-        df = pandas.DataFrame([hue.get_results(), saturation.get_results(),
-            lightness.get_results()], index=['Hue', 'Saturation', 'Lightness'])
+
+        results[d] = [hue.get_results(), saturation.get_results(),
+            lightness.get_results()]
+
+        df = pandas.DataFrame(results[d], index=['Hue', 'Saturation',
+            'Lightness'])
         df.columns = ContinuousFeature.columns
         df.to_csv('./reports/' + d + '.csv')
