@@ -120,7 +120,6 @@ if __name__ == "__main__":
         coins = {}
         new_count = 0
         cache_count = 0
-        cache_read_count = 0
 
         # If cache file exists, read from cache
         try:
@@ -128,46 +127,44 @@ if __name__ == "__main__":
                 reader = csv.DictReader(csvfile)
                 for row in reader:
                     coins[row['filename']] = Coin(row)
-                    cache_read_count += 1
         except:
             pass
+
+        for root, dirs, files in os.walk('data/' + denominations[d]):
+            for f in files:
+                if root.startswith('data/.git'):
+                    # Skip .git folder
+                    continue
+                if f in coins:
+                    # Skip cached data
+                    cache_count += 1
+                    continue
+
+                file_name = os.path.join(root, f)
+                #print('Processing ' + file_name + '...')
+                img = cv2.imread(file_name)
+                coins[f] = Coin(img)
+
+                new_count += 1
 
         # Cache processed data
         with open('cache/' + d + '.csv', 'w') as csvfile:
             fieldnames = ['filename', 'hue', 'saturation', 'lightness']
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
             writer.writeheader()
-            for root, dirs, files in os.walk('data/' + denominations[d]):
-                for f in files:
-                    if root.startswith('data/.git'):
-                        # Skip .git folder
-                        continue
-                    if f in coins:
-                        # Skip cached data
-                        cache_count += 1
-                        continue
 
-                    file_name = os.path.join(root, f)
-                    #print('Processing ' + file_name + '...')
-                    img = cv2.imread(file_name)
-                    coins[f] = Coin(img)
-
-                    # Write this coin to cache
-                    writer.writerow({
-                        'filename': f,
-                        'hue': coins[f].hue,
-                        'saturation': coins[f].saturation,
-                        'lightness': coins[f].lightness
-                    })
-
-                    new_count += 1
-
-        if cache_count != cache_read_count:
-            print "Error: Cache count doesn't match."
+            # Write the coins to cache
+            for f in coins:
+                writer.writerow({
+                    'filename': f,
+                    'hue': coins[f].hue,
+                    'saturation': coins[f].saturation,
+                    'lightness': coins[f].lightness
+                })
 
         print("Gathered " + str(cache_count + new_count) + " items, " +
             str(cache_count) + " of which are from cache.")
-            
+
         hue = ContinuousFeature([c.hue for c in coins.itervalues()])
         saturation = ContinuousFeature([c.saturation for c in coins.itervalues()])
         lightness = ContinuousFeature([c.lightness for c in coins.itervalues()])
