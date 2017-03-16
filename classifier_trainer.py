@@ -48,9 +48,14 @@ class ContinuousFeature:
         self.median = (np.median(np.array(data)))
         self.std_deviation = (np.std(data))
 
-    def get_results(self):
+    def to_list(self):
         return [self.count, self.minimum, self.f_quartile, self.mean,
             self.median, self.t_quartile, self.maximum, self.std_deviation]
+
+    def to_dict(self):
+        d = {}
+        d.update(vars(self))
+        return d
 
 
 if __name__ == "__main__":
@@ -80,10 +85,14 @@ if __name__ == "__main__":
         saturation = ContinuousFeature([c.saturation for c in coins])
         lightness = ContinuousFeature([c.lightness for c in coins])
 
-        results[d] = [hue.get_results(), saturation.get_results(),
-            lightness.get_results()]
+        result = [hue, saturation, lightness]
 
-        df = pandas.DataFrame(results[d], index=['Hue', 'Saturation',
-            'Lightness'])
+        results[d] = {'hue': hue.to_dict(), 'saturation': saturation.to_dict(),
+            'lightness': lightness.to_dict()}
+
+        df = pandas.DataFrame([hue.to_list(), saturation.to_list(),
+            lightness.to_list()], index=['Hue', 'Saturation', 'Lightness'])
         df.columns = ContinuousFeature.columns
         df.to_csv('./reports/' + d + '.csv')
+
+    print results
