@@ -28,9 +28,14 @@ class Coin:
 
     def __init__(self, bgr):
         """Initializes the euro coin object."""
-        self.bgr = bgr
-        self.gray = cv2.cvtColor(bgr, cv2.COLOR_BGR2GRAY)
-        self.hsv = cv2.cvtColor(bgr, cv2.COLOR_BGR2HSV)
+        # Convert to YUV color space
+        self.yuv = cv2.cvtColor(bgr, cv2.COLOR_BGR2YUV)
+        # Contrast stretching, equalize the histogram of the Y channel
+        self.yuv[:,:,0] = cv2.equalizeHist(self.yuv[:,:,0])
+        # convert the YUV image back to RGB format
+        self.bgr = cv2.cvtColor(self.yuv, cv2.COLOR_YUV2BGR)
+        self.gray = cv2.cvtColor(self.bgr, cv2.COLOR_BGR2GRAY)
+        self.hsv = cv2.cvtColor(self.bgr, cv2.COLOR_BGR2HSV)
         width, height, depth = img.shape
         self.r = width / 2
         self.__process_color()
