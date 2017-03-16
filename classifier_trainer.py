@@ -35,6 +35,9 @@ class Coin:
             self.hue = int(src['hue'])
             self.saturation = int(src['saturation'])
             self.lightness = int(src['lightness'])
+            self.luma = int(src['luma'])
+            self.blue_diff = int(src['blue_diff'])
+            self.red_diff = int(src['red_diff'])
             return
 
         # Else source is a bgr stream image
@@ -57,14 +60,24 @@ class Coin:
         # Only use half of the coin area to determine it's center color
         r = self.r * 0.5
 
+        # Hue, Saturation and Lightness
         roi = self.hsv[int(self.r-r):int(self.r+r), int(self.r-r):int(self.r+r)]
-
         if len(roi) > 0:
             self.hue = (sum([pixel[0] for rows in roi for pixel in rows])
                 / len(roi) / len(roi[0]))
             self.saturation = (sum([pixel[1] for rows in roi for pixel in rows])
                 / len(roi) / len(roi[0]))
             self.lightness = (sum([pixel[2] for rows in roi for pixel in rows])
+                / len(roi) / len(roi[0]))
+
+        # Luma and Chrominance
+        roi = self.yuv[int(self.r-r):int(self.r+r), int(self.r-r):int(self.r+r)]
+        if len(roi) > 0:
+            self.luma = (sum([pixel[0] for rows in roi for pixel in rows])
+                / len(roi) / len(roi[0]))
+            self.blue_diff = (sum([pixel[1] for rows in roi for pixel in rows])
+                / len(roi) / len(roi[0]))
+            self.red_diff = (sum([pixel[2] for rows in roi for pixel in rows])
                 / len(roi) / len(roi[0]))
 
 
@@ -149,7 +162,8 @@ if __name__ == "__main__":
 
         # Cache processed data
         with open('cache/' + d + '.csv', 'w') as csvfile:
-            fieldnames = ['filename', 'hue', 'saturation', 'lightness']
+            fieldnames = ['filename', 'hue', 'saturation', 'lightness',
+                'luma', 'blue_diff', 'red_diff']
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
             writer.writeheader()
 
@@ -159,7 +173,10 @@ if __name__ == "__main__":
                     'filename': f,
                     'hue': coins[f].hue,
                     'saturation': coins[f].saturation,
-                    'lightness': coins[f].lightness
+                    'lightness': coins[f].lightness,
+                    'luma': coins[f].luma,
+                    'blue_diff': coins[f].blue_diff,
+                    'red_diff': coins[f].red_diff
                 })
 
         print("Gathered " + str(cache_count + new_count) + " items, " +
@@ -168,15 +185,31 @@ if __name__ == "__main__":
         hue = ContinuousFeature([c.hue for c in coins.itervalues()])
         saturation = ContinuousFeature([c.saturation for c in coins.itervalues()])
         lightness = ContinuousFeature([c.lightness for c in coins.itervalues()])
+        luma = ContinuousFeature([c.luma for c in coins.itervalues()])
+        blue_diff = ContinuousFeature([c.blue_diff for c in coins.itervalues()])
+        red_diff = ContinuousFeature([c.red_diff for c in coins.itervalues()])
 
         result = [hue, saturation, lightness]
 
-        classifier['classification'][d] = {'hue': hue.to_dict(), 'saturation':
-            saturation.to_dict(), 'lightness': lightness.to_dict()}
+        classifier['classification'][d] = {
+            'hue': hue.to_dict(),
+            'saturation': saturation.to_dict(),
+            'lightness': lightness.to_dict(),
+            'luma': luma.to_dict(),
+            'blue_diff': blue_diff.to_dict(),
+            'red_diff': red_diff.to_dict()
+            }
 
         # Generate Reports
-        df = pandas.DataFrame([hue.to_list(), saturation.to_list(),
-            lightness.to_list()], index=['Hue', 'Saturation', 'Lightness'])
+        df = pandas.DataFrame([
+            hue.to_list(),
+            saturation.to_list(),
+            lightness.to_list(),
+            luma.to_list(),
+            blue_diff.to_list(),
+            red_diff.to_list()
+
+            ], index=['Hue', 'Saturation', 'Lightness', 'Luma', 'Blue Difference', 'Red Difference'])
         df.columns = ContinuousFeature.columns
         df.to_csv('./reports/' + d + '.csv')
 
