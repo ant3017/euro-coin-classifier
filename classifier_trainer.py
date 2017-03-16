@@ -89,7 +89,9 @@ if __name__ == "__main__":
         'classification': {}
     }
 
-    denominations = {'5c':'Xc/5c', '10c':'X0c/10c', '20c':'X0c/20c', '50c':'X0c/50c', 'X0c':'X0c', '1e':'1e', '2e':'2e'}
+    denominations = {'1c':'Xc/1c', '2c':'Xc/2c', '5c':'Xc/5c', 'Xc':'Xc',
+        '10c':'X0c/10c', '20c':'X0c/20c', '50c':'X0c/50c', 'X0c':'X0c',
+        '1e':'1e', '2e':'2e'}
 
 
     for d in denominations:
