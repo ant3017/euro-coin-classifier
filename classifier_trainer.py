@@ -56,7 +56,7 @@ class ContinuousFeature:
 if __name__ == "__main__":
     # If this script is running as a standalone program
 
-    denominations = ['5c', '10c', '20c', '50c', '1e', '2e']
+    denominations = {'5c':'Xc/5c', '10c':'X0c/10c', '20c':'X0c/20c', '50c':'X0c/50c', 'X0c':'X0c', '1e':'1e', '2e':'2e'}
     results = {}
 
 
@@ -66,7 +66,7 @@ if __name__ == "__main__":
 
         coins = []
 
-        for root, dirs, files in os.walk('data/' + d):
+        for root, dirs, files in os.walk('data/' + denominations[d]):
             for f in files:
                 if root.startswith('data/.git'):
                     continue
