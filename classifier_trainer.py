@@ -21,13 +21,25 @@ import cv2
 import os
 import pandas
 import json
+import csv
 
 
 class Coin:
     """Coin class for a euro coin."""
 
-    def __init__(self, bgr):
+    def __init__(self, src):
         """Initializes the euro coin object."""
+
+        # If source is a dictionary, creating from cache
+        if isinstance(src, dict):
+            self.hue = int(src['hue'])
+            self.saturation = int(src['saturation'])
+            self.lightness = int(src['lightness'])
+            return
+
+        # Else source is a bgr stream image
+        bgr = src
+
         # Convert to YUV color space
         self.yuv = cv2.cvtColor(bgr, cv2.COLOR_BGR2YUV)
         # Contrast stretching, equalize the histogram of the Y channel
@@ -105,21 +117,60 @@ if __name__ == "__main__":
 
         print('Processing "' + d + '" denomination...')
 
-        coins = []
+        coins = {}
+        new_count = 0
+        cache_count = 0
+        cache_read_count = 0
 
-        for root, dirs, files in os.walk('data/' + denominations[d]):
-            for f in files:
-                if root.startswith('data/.git'):
-                    continue
-                file_name = os.path.join(root, f)
-                #print('Processing ' + file_name + '...')
-                img = cv2.imread(file_name)
-                coin = Coin(img)
-                coins.append(coin)
+        # If cache file exists, read from cache
+        try:
+            with open('cache/' + d + '.csv') as csvfile:
+                reader = csv.DictReader(csvfile)
+                for row in reader:
+                    coins[row['filename']] = Coin(row)
+                    cache_read_count += 1
+        except:
+            pass
 
-        hue = ContinuousFeature([c.hue for c in coins])
-        saturation = ContinuousFeature([c.saturation for c in coins])
-        lightness = ContinuousFeature([c.lightness for c in coins])
+        # Cache processed data
+        with open('cache/' + d + '.csv', 'w') as csvfile:
+            fieldnames = ['filename', 'hue', 'saturation', 'lightness']
+            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+            writer.writeheader()
+            for root, dirs, files in os.walk('data/' + denominations[d]):
+                for f in files:
+                    if root.startswith('data/.git'):
+                        # Skip .git folder
+                        continue
+                    if f in coins:
+                        # Skip cached data
+                        cache_count += 1
+                        continue
+
+                    file_name = os.path.join(root, f)
+                    #print('Processing ' + file_name + '...')
+                    img = cv2.imread(file_name)
+                    coins[f] = Coin(img)
+
+                    # Write this coin to cache
+                    writer.writerow({
+                        'filename': f,
+                        'hue': coins[f].hue,
+                        'saturation': coins[f].saturation,
+                        'lightness': coins[f].lightness
+                    })
+
+                    new_count += 1
+
+        if cache_count != cache_read_count:
+            print "Error: Cache count doesn't match."
+
+        print("Gathered " + str(cache_count + new_count) + " items, " +
+            str(cache_count) + " of which are from cache.")
+            
+        hue = ContinuousFeature([c.hue for c in coins.itervalues()])
+        saturation = ContinuousFeature([c.saturation for c in coins.itervalues()])
+        lightness = ContinuousFeature([c.lightness for c in coins.itervalues()])
 
         result = [hue, saturation, lightness]
 
