@@ -52,7 +52,7 @@ Usage:
 
 Running the script will process all images in the *data* folder.  
 
-![Training](doc/img/training.jpg) <style>img[alt="Training"] {width: 50%}</style>
+<img alt="Training" src="http://raw.github.com/chen-yumin/euro-coin-classifier/master/doc/img/training.jpg" width="640"/>
 
 Here's an example report from 1794 samples of 1-euro coins:
 
@@ -66,6 +66,7 @@ Here's an example report from 1794 samples of 1-euro coins:
 | Red Difference  | 1794  | 77  | 134.0     | 141.26 | 142.0  | 149.0     | 164 | 9.28  |  
 
 The histograms of the 1-euro coins:  
+
 | Hue | Saturation | Intensity |
 | :---: | :---: | :---: |
 | ![Hue](doc/img/1e-hue.jpg) | ![Saturation](doc/img/1e-saturation.jpg) | ![Intensity](doc/img/1e-intensity.jpg) |
