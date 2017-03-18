@@ -46,6 +46,12 @@ Train Your Own Classifier
 ------------------------
 After the dataset is ready and placed in the *data* folder, the training can start by running the [classifier_trainer.py](classifier_trainer.py) script. This script focuses on *Descriptive Statistics* analytics and process the data and output the reports under the *reports* folder in *.csv* format.  
 
+Usage:
+
+    python classifier_trainer.py  
+
+![Training](doc/img/training.jpg)
+
 Here's an example report from 1794 samples of 1-euro coins:
 
 |                 | Count | Min | 1st Quart | Mean   | Median | 3rd Quart | Max | Std Dev |
@@ -56,6 +62,8 @@ Here's an example report from 1794 samples of 1-euro coins:
 | Luma            | 1794  | 48  | 78.0      | 102.55 | 98.0   | 123.0     | 209 | 31.75 |
 | Blue Difference | 1794  | 93  | 112.0     | 117.80 | 118.0  | 124.0     | 151 | 7.54  |
 | Red Difference  | 1794  | 77  | 134.0     | 141.26 | 142.0  | 149.0     | 164 | 9.28  |  
+
+After the training, a classifier will be generated as a JSON file [euro_coin_detector_classifier.json](euro_coin_detector_classifier.json).  
 
 
 Licensing
