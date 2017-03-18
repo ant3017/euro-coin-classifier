@@ -50,7 +50,8 @@ Usage:
 
     python classifier_trainer.py  
 
-![Training](doc/img/training.jpg)
+Running the script will process all images in the *data* folder.  
+![Training](doc/img/training.jpg) <!-- .element height="50%" width="50%" -->
 
 Here's an example report from 1794 samples of 1-euro coins:
 
