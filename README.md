@@ -22,7 +22,24 @@ The reports can be found under the [reports](reports) folder.
 
 Data Preparation
 ------------------------
-The [dataset_collector.py](dataset_collector.py) script is used to prepare dataset for the training of the classifier. It uses computer vision techniques to recognize and segment euro coins from natural images, and output the segmented coins into the *output* folder.
+The [dataset_collector.py](dataset_collector.py) script is used to prepare dataset for the training of the classifier. It uses computer vision techniques to recognize and segment euro coins from natural images, and output the segmented coins into the *output* folder.  
+
+The dataset collector takes natural images of euro coins as input, and process them into segmented image dataset that is ready for the classifier training process.  
+
+Usage:
+
+    python dataset_collector.py [image_files...]  
+
+Multiple image files can be all passed at once to batch process them all.
+
+Example:  
+
+| Original | Processed |
+| :---: | :---: |
+| ![Original](doc/img/dataset-collector-before.jpg) | ![Processed](doc/img/dataset-collector-after.jpg) |
+  
+Original: A natural image of 22 euro coins scattered on a surface.  
+Processed: 22 separate images of euro coins cropped to just the coins themselves.  
 
 
 
