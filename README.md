@@ -1,10 +1,13 @@
 **Euro Coin Classifier**
 ========================
+<sup>*This Euro Coin Classifier is part of the [Euro Coin Detector][4] project.*</sup>  
+
+The Main GitHub Repository: [Euro Coin Detector](https://github.com/chen-yumin/euro-coin-detector)  
 
 
 Introduction
 ------------------------
-This **Euro Coin Classifier** is part of the [Euro Coin Detector][4] project that aims to locate and recognize euro coins from natural images and classify them according to their coin denomination and tell their values. 
+This **Euro Coin Classifier** is part of the [Euro Coin Detector][4] project that aims to locate and recognize euro coins from natural images and classify them according to their coin denomination and tell their values.
 
 The training of this classifier uses statistics and data mining techniques to extract and process information from many images of the euro coin series of each denomination. The goal is to predict and generalize each euro coin type's attributes using *Machine Learning for Predictive Data Analytics* techniques.
 
@@ -14,6 +17,7 @@ The classifier is developed using *Artificial Intelligence* to describe the euro
 Data Exploration and Analytics
 ------------------------
 The reports are focused on *Descriptive Statistics* analytics. For each euro coin denomination, its HSI (Hue, Saturation, Intensity) and LUV (Luma, Blue Difference, Red Difference) color space values are the main area of interests.  
+
 The reports can be found under the [reports](reports) folder.  
 
 
