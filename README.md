@@ -1,8 +1,7 @@
 **Euro Coin Classifier**
 ========================
 <sup>*This Euro Coin Classifier is part of the [Euro Coin Detector][4] project.*</sup>  
-
-The Main GitHub Repository: [Euro Coin Detector](https://github.com/chen-yumin/euro-coin-detector)  
+<sup>*The Main GitHub Repository: [Euro Coin Detector](https://github.com/chen-yumin/euro-coin-detector)*</sup>  
 
 
 Introduction
@@ -19,6 +18,12 @@ Data Exploration and Analytics
 The reports are focused on *Descriptive Statistics* analytics. For each euro coin denomination, its HSI (Hue, Saturation, Intensity) and LUV (Luma, Blue Difference, Red Difference) color space values are the main area of interests.  
 
 The reports can be found under the [reports](reports) folder.  
+
+
+Data Preparation
+------------------------
+The [dataset_collector.py](dataset_collector.py) script is used to prepare dataset for the training of the classifier. It uses computer vision techniques to recognize and segment euro coins from natural images, and output the segmented coins into the *output* folder.
+
 
 
 Licensing
