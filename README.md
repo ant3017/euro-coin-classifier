@@ -8,7 +8,7 @@ Introduction
 ------------------------
 This **Euro Coin Classifier** is part of the [Euro Coin Detector][4] project that aims to locate and recognize euro coins from natural images and classify them according to their coin denomination and tell their values.
 
-The training of this classifier uses statistics and data mining techniques to extract and process information from many images of the euro coin series of each denomination. The goal is to predict and generalize each euro coin type's attributes using *Machine Learning for Predictive Data Analytics* techniques.
+The training of this classifier uses statistics analytics to extract and process information from many images of the euro coin series of each denomination. The goal is to predict and generalize each euro coin type's attributes using *Machine Learning for Predictive Data Analytics* techniques.
 
 The classifier is developed using *Artificial Intelligence* to describe the euro coins' shape, size, color, patterns, etc. so later the classifier can be used to determine whether an arbitrary object is a certain denomination of euro coin.  
 
@@ -37,10 +37,25 @@ Example:
 | Original | Processed |
 | :---: | :---: |
 | ![Original](doc/img/dataset-collector-before.jpg) | ![Processed](doc/img/dataset-collector-after.jpg) |
-  
+
 Original: A natural image of 22 euro coins scattered on a surface.  
 Processed: 22 separate images of euro coins cropped to just the coins themselves.  
 
+
+Train Your Own Classifier
+------------------------
+After the dataset is ready and placed in the *data* folder, the training can start by running the [classifier_trainer.py](classifier_trainer.py) script. This script focuses on *Descriptive Statistics* analytics and process the data and output the reports under the *reports* folder in *.csv* format.  
+
+Here's an example report from 1794 samples of 1-euro coins:
+
+|                 | Count | Min | 1st Quart | Mean   | Median | 3rd Quart | Max | Std Dev |
+|-----------------|-------|-----|-----------|--------|--------|-----------|-----|---------------|
+| Hue             | 1794  | 3   | 10.0      | 23.17  | 13.0   | 15.0      | 156 | 30.28 |
+| Saturation      | 1794  | 3   | 53.0      | 98.21  | 97.0   | 135.0     | 228 | 53.09 |
+| Lightness       | 1794  | 52  | 94.0      | 118.85 | 115.0  | 141.0     | 218 | 31.94 |
+| Luma            | 1794  | 48  | 78.0      | 102.55 | 98.0   | 123.0     | 209 | 31.75 |
+| Blue Difference | 1794  | 93  | 112.0     | 117.80 | 118.0  | 124.0     | 151 | 7.54  |
+| Red Difference  | 1794  | 77  | 134.0     | 141.26 | 142.0  | 149.0     | 164 | 9.28  |  
 
 
 Licensing
